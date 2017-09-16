@@ -1,11 +1,5 @@
 # **Finding Lane Lines on the Road** 
 
-## Writeup Template
-
-### You can use this file as a template for your writeup if you want to submit it as a markdown file. But feel free to use some other method and submit a pdf if you prefer.
-
----
-
 **Finding Lane Lines on the Road**
 
 The goals / steps of this project are the following:
@@ -15,7 +9,7 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./examples/grayscale.jpg "Grayscale"
+[image1]: ./test_images/solidWhiteRight.jpg_LINE.jpg
 
 ---
 
@@ -23,9 +17,12 @@ The goals / steps of this project are the following:
 
 ### 1. Describe your pipeline. As part of the description, explain how you modified the draw_lines() function.
 
-My pipeline consisted of 5 steps. First, I converted the images to grayscale, then I .... 
+First, I converted the images to grayscale, then I use cv2.GaussianBlur to smooth out edges.
+cv2.Canny to find edges.cv2.HoughLinesP to find the lane line in the part that needs to be detected.
 
-In order to draw a single line on the left and right lanes, I modified the draw_lines() function by ...
+In order to draw a single line on the left and right lanes, I modified the draw_lines() function by calculate average slope and intercept for the left and right lanes of each image,then converted to coordinates in order to draw lines.
+
+The final output line image is combined with the original image.
 
 If you'd like to include images to show how the pipeline works, here is how to include an image: 
 
@@ -35,13 +32,13 @@ If you'd like to include images to show how the pipeline works, here is how to i
 ### 2. Identify potential shortcomings with your current pipeline
 
 
-One potential shortcoming would be what would happen when ... 
+One potential shortcoming would be what would happen when the corners of the corners are detected, the deviation is very large
 
-Another shortcoming could be ...
+Another shortcoming could be the length of the dotted line is different,resulting in the painting line is not smooth.
 
 
 ### 3. Suggest possible improvements to your pipeline
 
-A possible improvement would be to ...
+A possible improvement would be to find a solution that can also be applied to the curve.
 
-Another potential improvement could be to ...
+Another potential improvement could be to adjust the parameters to make the program more stable.
