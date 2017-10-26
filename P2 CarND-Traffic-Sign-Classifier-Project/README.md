@@ -14,7 +14,7 @@ The goals / steps of this project are the following:
 
 This project is used to classify traffic signs.The network structure used is similar to Lenet
 
-You're reading it! and here is a link to my [project code](https://github.com/udacity/CarND-Traffic-Sign-Classifier-Project/blob/master/Traffic_Sign_Classifier.ipynb)
+You're reading it! and here is a link to my [project code](https://github.com/dmlstarry/CarND/P2 CarND-Traffic-Sign-Classifier-Project/Traffic_Sign_Classifier.ipynb)
 
 ## Data Set Summary & Exploration
 
@@ -38,7 +38,8 @@ Here is an exploratory visualization of the data set.
  1. As a first step, I decided to convert the images to grayscale because it reduce the amount of calculation without affecting the accuracy.Here is an example of a traffic sign image before and after grayscaling.
 
 ![70km](./examples/70km.png)
-![70km_gray](./examples/70km_gray.png)
+![70km_gray](./examples/70km_gray.png)  
+
 2. As a last step, I normalized the image data because after normalization the gradient descent is accelerated to solve the optimal solution
     
 
@@ -80,11 +81,11 @@ rate = 0.001.And do one_hot for label.
 
 1. Here are five German traffic signs that I found on the wiki:
 
-![General caution](./newdata/General caution.png)
-![Priority road](./newdata/Priority road.png)
-![Speed limit 60](./newdata/Speed limit 60.png)
+![General caution](./newdata/Generalcaution.png)
+![Priority road](./newdata/Priorityroad.png)
+![Speed limit 60](./newdata/Speedlimit60.png)
 ![Stop](./newdata/Stop.png)
-![Turn left ahead](./newdata/Turn left ahead.png)  
+![Turn left ahead](./newdata/Turnleftahead.png)  
 
   
 2. Here are the results of the prediction.The model was able to correctly guess 5 of the 5 traffic signs, which gives an accuracy of 100%. 
