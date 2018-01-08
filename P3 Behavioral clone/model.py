@@ -11,7 +11,7 @@ import numpy as np
 
 # **Reading data set**
 
-# In[3]:
+# In[2]:
 
 
 df = pd.read_csv('driving_log.csv')
@@ -25,7 +25,7 @@ df
 
 # **Merge data set**
 
-# In[5]:
+# In[3]:
 
 
 df_c = df.iloc[:,[0,3]]
@@ -41,7 +41,7 @@ df=pd.concat([df_c,df_r,df_l])
 df.reset_index(drop=True)
 
 
-# In[6]:
+# In[4]:
 
 
 from sklearn.model_selection import train_test_split
@@ -50,7 +50,7 @@ print(df_train.shape)
 print(df_val.shape)
 
 
-# In[21]:
+# In[5]:
 
 
 import random
@@ -106,7 +106,7 @@ def Exgenerator(data,batch_size=64):
         
 
 
-# In[24]:
+# In[6]:
 
 
 a,b = next(Exgenerator(df_train))
@@ -114,7 +114,7 @@ plt.imshow(a[1])
 print(b[1])
 
 
-# In[13]:
+# In[7]:
 
 
 from keras.models import Sequential, Model
@@ -132,6 +132,7 @@ model.add(Conv2D(64,(3,3),activation="relu"))
 model.add(Conv2D(64,(3,3),activation="relu"))
 model.add(Flatten())
 model.add(Dense(512))
+model.add(Dropout(0.5))
 model.add(Dense(64))
 model.add(Dense(16))
 model.add(Dense(1))
@@ -139,25 +140,25 @@ model.add(Dense(1))
 model.compile(loss='mse', optimizer='adam', metrics=['accuracy'])
 
 
-# In[14]:
+# In[8]:
 
 
 model.summary()
 
 
-# In[26]:
+# In[11]:
 
 
-history=model.fit_generator(generator(df_train),steps_per_epoch=576,epochs=3,validation_data=generator(df_val),validation_steps=57)
+history2=model.fit_generator(generator(df_train),steps_per_epoch=576,epochs=3,validation_data=generator(df_val),validation_steps=57)
 
 
-# In[25]:
+# In[9]:
 
 
 history=model.fit_generator(Exgenerator(df_train),steps_per_epoch=576,epochs=3,validation_data=Exgenerator(df_val),validation_steps=57)
 
 
-# In[27]:
+# In[12]:
 
 
 model.save("dml.h5")
@@ -172,7 +173,7 @@ model =load_model("dml1.h5")
 
 
 
-# In[ ]:
+# In[10]:
 
 
 plt.plot(history.history['loss'])
